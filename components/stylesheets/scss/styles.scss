@@ -1,0 +1,210 @@
+// imports 
+@import "vars";
+@import "mixins";
+// --- Typography --- //
+p,
+h3,
+h4 {
+    font-family: 'Rubik', sans-serif;
+    color: #fff;
+}
+p {
+    font-size: 18px;
+}
+// --- End of typography --- //
+body {
+    background: $v-dark-blue;
+}
+main#time-tracking-app {
+    align-content: center;
+    display: grid;
+    grid-gap: 1.5em;
+    grid-template-columns: repeat(4, 200px);
+    grid-template-rows: repeat(2, 195px);
+    justify-content: center;
+    min-height: 100vh;
+    @include max(900) {
+        grid-template-columns: repeat(3, 200px);
+    }
+    @include max(680) {
+        grid-template-columns: repeat(3, get-vw-screen(200px, 680));
+    }
+    @include max($mob-break) {
+        grid-template-columns: repeat(1, 100%);
+        grid-template-rows: auto;
+    }
+    div.client-card {
+        background: $dark-blue;
+        border-radius: 10px;
+        grid-row-end: 4;
+        grid-row-start: 1;
+        height: 415px;
+        @include max($mob-break) {
+            display: inline-block;
+            height: 225px;
+        }
+        &__wrapper {
+            background: $base-blue;
+            border-radius: 10px;
+            display: grid;
+            grid-template-rows: 40% 60%;
+            height: 275px;
+            @include max($mob-break) {
+                align-items: center;
+                grid-template-columns: 40% 1fr;
+                grid-template-rows: auto;
+                height: 155px;
+            }
+            &__image {
+                @include max($mob-break) {
+                    justify-self: end;
+                    margin-right: 1.25em;
+                }
+                img {
+                    border-radius: 50%;
+                    border: 2px solid #fff;
+                    margin: 1.5em 0 0 1.5em;
+                    width: 65px;
+                    @include max($mob-break) {
+                        margin: 0 0 0 1.5em;
+                    }
+                }
+            }
+            &__type {
+                padding: .75em 0 0 1.5em;
+                @include max($mob-break) {
+                    padding: 0;
+                }
+                h4 {
+                    font-weight: 300;
+                    margin: .05em 0 0 0;
+                }
+                p {
+                    font-size: 14px;
+                    margin: .05em 0 0 0;
+                }
+                h4 {
+                    font-size: 35px;
+                    @include max($mob-break) {
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+        &__frequency {
+            padding: 0.5em 1.75em;
+            @include max($mob-break) {
+                display: grid;
+                grid-template-columns: 31% 33% 33%;
+                padding: 0.5em 0;
+                text-align: center;
+            }
+            p {
+                color: $pale-blue;
+                cursor: pointer;
+                font-size: 16px;
+                &:hover,
+                &:active {
+                    color: #fff;
+                }
+            }
+            p.active {
+                color: #fff;
+            }
+        }
+    }
+    div.client-modules {
+        background: $dark-blue;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover,
+        &:active {
+            background: $base-blue;
+        }
+        @include max($mob-break) {
+            height: 160px;
+        }
+        &__data {
+            border-radius: 10px 10px 0 0;
+            padding: 1.5em;
+            @include max($mob-break) {
+                padding: 0 1.5em;
+            }
+            div {
+                @include max($mob-break) {
+                    float: right;
+                    margin-top: .20em;
+                }
+                p {
+                    color: $pale-blue;
+                    display: inline-block;
+                    font-size: 12px;
+                    margin-top: .75em;
+                    @include max($mob-break) {
+                        font-size: 16px;
+                    }
+                }
+            }
+            span.ellipsis {
+                float: right;
+                &:hover path {
+                    fill: #fff;
+                }
+            }
+        }
+        .client-modules__data__module-name {
+            margin: 0 0 1em;
+            @include max($mob-break) {
+                margin: 1.5em 0 .25em;
+            }
+        }
+        .client-modules__data__time {
+            display: inline-block;
+            font-size: 36px;
+            font-weight: 300;
+            margin-top: .5em;
+            margin: 0;
+        }
+    }
+    div.client-modules__top {
+        border-radius: 10px 10px 0 0;
+        height: 40px;
+        padding-right: .5em;
+        text-align: right;
+        span.svg-container {
+            display: block;
+            max-height: 40px;
+            overflow: hidden;
+        }
+    }
+    div#client-module--work {
+        div.client-modules__top {
+            background: hsl(15, 100%, 70%);
+        }
+    }
+    div#client-module--play {
+        div.client-modules__top {
+            background: hsl(195, 74%, 62%);
+        }
+    }
+    div#client-module--study {
+        div.client-modules__top {
+            background: hsl(348, 100%, 68%);
+        }
+    }
+    div#client-module--exercise {
+        div.client-modules__top {
+            background: hsl(145, 58%, 55%);
+        }
+    }
+    div#client-module--social {
+        div.client-modules__top {
+            background: hsl(264, 64%, 52%);
+        }
+    }
+    div#client-module--self-care {
+        div.client-modules__top {
+            background: hsl(43, 84%, 65%);
+        }
+    }
+}
